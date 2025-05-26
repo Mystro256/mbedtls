@@ -136,6 +136,12 @@ mbedtls_x509_string_to_names:"C=NL, O=Offspark\\":"":MBEDTLS_ERR_X509_INVALID_NA
 X509 String to Names #6 (Invalid, no '=' or ',')
 mbedtls_x509_string_to_names:"ABC123":"":MBEDTLS_ERR_X509_INVALID_NAME
 
+X509 String to Names (repeated OID, middle is zero-length)
+mbedtls_x509_string_to_names:"CN=ab,CN=#0400,CN=ef":"CN=ef":0:0
+
+X509 String to Names (repeated OID, last is zero-length)
+mbedtls_x509_string_to_names:"CN=ab,CN=cd,CN=#0400":"CN=#0000":0:MAY_FAIL_GET_NAME
+
 Check max serial length
 x509_set_serial_check:
 
